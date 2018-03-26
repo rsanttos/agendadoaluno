@@ -1,5 +1,6 @@
 package pds.ufrn.com.br.agendadoaluno;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -18,6 +19,24 @@ public class SplashScreen extends AppCompatActivity {
         logo = (ImageView) findViewById(R.id.logomarca);
         Animation plimplim = AnimationUtils.loadAnimation(this,R.anim.animation);
         logo.startAnimation(plimplim);
+        final Intent calendar = new Intent(this,Calendar.class);
+        Thread timer = new Thread(){
+            public void run () {
+                try {
+                    sleep(2800);
+
+                }
+                catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                finally {
+                    startActivity(calendar);
+                    finish();
+                }
+                }
+        };
+        timer.start();
+
     }
 
 }
