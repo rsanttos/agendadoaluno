@@ -1,4 +1,7 @@
 <resources>
-    <string name="app_name">AgendaDoAluno</string>
+    <string name="app_name">Agenda do Aluno</string>
     <string name="title_activity_splash_screen">SplashScreen</string>
+    <string name="tab_name1">Agenda</string>
+    <string name="tab_name2">Configurações</string>
+    <string name="text_view_message">Selecione uma data para visualizar eventos.</string>
 </resources>
