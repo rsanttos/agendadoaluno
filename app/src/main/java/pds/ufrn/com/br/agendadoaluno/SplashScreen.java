@@ -38,5 +38,10 @@ public class SplashScreen extends AppCompatActivity {
         timer.start();
 
     }
+    @Override
+    protected void onPause() {
+        super.onPause();
+        logo.clearAnimation();
+    }
 
 }
