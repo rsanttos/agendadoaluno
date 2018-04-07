@@ -19,7 +19,7 @@ public class SplashScreen extends AppCompatActivity {
         logo = (ImageView) findViewById(R.id.logomarca);
         Animation plimplim = AnimationUtils.loadAnimation(this,R.anim.animation);
         logo.startAnimation(plimplim);
-        final Intent calendar = new Intent(this,Calendar.class);
+        final Intent login = new Intent(this,Login.class);
         Thread timer = new Thread(){
             public void run () {
                 try {
@@ -30,7 +30,7 @@ public class SplashScreen extends AppCompatActivity {
                     e.printStackTrace();
                 }
                 finally {
-                    startActivity(calendar);
+                    startActivity(login);
                     finish();
                 }
                 }

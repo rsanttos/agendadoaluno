@@ -17,7 +17,13 @@
             </intent-filter>
         </activity>
         <activity android:name=".MainActivity" />
-        <activity android:name=".Calendar"></activity>
+        <activity android:name=".Calendar" />
+        <activity android:name=".Login"></activity>
+
     </application>
+    <uses-sdk
+        android:minSdkVersion="14">
+
+    </uses-sdk>
 
 </manifest>
