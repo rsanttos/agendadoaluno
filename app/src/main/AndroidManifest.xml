@@ -18,7 +18,16 @@
         </activity>
         <activity android:name=".MainActivity" />
         <activity android:name=".Calendar" />
+<<<<<<< HEAD
         <activity android:name=".CalendarActivity"></activity>
+=======
+        <activity android:name=".Login"></activity>
+
+>>>>>>> b7a139c644e472ec6c5ca58ce99d84839b09a436
     </application>
+    <uses-sdk
+        android:minSdkVersion="14">
+
+    </uses-sdk>
 
 </manifest>
