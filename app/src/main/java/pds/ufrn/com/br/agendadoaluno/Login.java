@@ -7,6 +7,7 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
@@ -26,8 +27,8 @@ public class Login extends AppCompatActivity {
     private static final String CLIENT_ID_VALUE = "agenda-do-aluno-id";
     private static final String SECRET_KEY = "segredo";
 
-    private static final String REDIRECT_URI = "https://api.info.ufrn.br";
-    private static final String AUTHORIZATION_URL = "https://autenticacao-sustentacao.info.ufrn.br/authz-server/oauth/authorize";
+    private static final String REDIRECT_URI = "http://android.local/";
+    private static final String AUTHORIZATION_URL = "https://apitestes.info.ufrn.br/authz-server/oauth/authorize";
     private static final String ACCESS_TOKEN_URL = "https://autenticacao-sustentacao.info.ufrn.br/authz-server/oauth/token";
     private static final String RESPONSE_TYPE_PARAM = "response_type";
     private static final String GRANT_TYPE = "authorization_code";
@@ -80,6 +81,7 @@ public class Login extends AppCompatActivity {
         });
 
         String authUrl = getAuthorizationUrl();
+        Log.d("URL", authUrl);
         webView.loadUrl(authUrl);
     }
 
