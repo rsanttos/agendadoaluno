@@ -27,7 +27,7 @@ public class Login extends AppCompatActivity {
 
     private static final String CLIENT_ID_VALUE = "agenda-do-aluno-id";
     private static final String SECRET_KEY = "segredo";
-    private static final String REDIRECT_URI = "http://localhost:8080/cursos";
+    private static final String REDIRECT_URI = "http://android.local/";
     private static final String AUTHORIZATION_URL = "https://autenticacao.info.ufrn.br/authz-server/oauth/authorize";
     private static final String ACCESS_TOKEN_URL = "https://api.info.ufrn.br/authz-server/oauth/token";
     private static final String RESPONSE_TYPE_PARAM = "response_type";
