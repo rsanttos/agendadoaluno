@@ -105,10 +105,11 @@ public class Login extends AppCompatActivity {
             ProgressDialog.show(Login.this, "", "Loading", true);
         }
 
+        protected OAuth2Client client;
+        protected String token;
         @Override
         protected Boolean doInBackground(String... strings) {
             try {
-                OAuth2Client client;
                 Map<String, String> map = new HashMap<>();
                 map.put(REDIRECT_URI_PARAM, REDIRECT_URI);
                 map.put(RESPONSE_TYPE_VALUE, strings[0]);
@@ -121,6 +122,7 @@ public class Login extends AppCompatActivity {
                 OAuthResponse response = client.requestAccessToken();
                 if (response.isSuccessful()) {
                     savePreferences(response);
+                    token = response.getAccessToken();
                     return true;
                 }
             } catch (IOException e) {
@@ -137,7 +139,9 @@ public class Login extends AppCompatActivity {
             }
 
             if(status){
-                Intent startOffersActivity = new Intent(Login.this, Calendar.class);
+                //Intent startOffersActivity = new Intent(Login.this, Calendar.class);
+                Intent startOffersActivity = new Intent(Login.this, StudentActivity.class);
+                startOffersActivity.putExtra("token", token);
                 Login.this.startActivity(startOffersActivity);
             }
         }
