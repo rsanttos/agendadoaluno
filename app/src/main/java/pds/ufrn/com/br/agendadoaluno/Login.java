@@ -2,11 +2,13 @@ package pds.ufrn.com.br.agendadoaluno;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.Context;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
@@ -26,8 +28,8 @@ public class Login extends AppCompatActivity {
     private static final String CLIENT_ID_VALUE = "agenda-do-aluno-id";
     private static final String SECRET_KEY = "segredo";
 
-    private static final String REDIRECT_URI = "https://api.info.ufrn.br";
-    private static final String AUTHORIZATION_URL = "https://autenticacao-sustentacao.info.ufrn.br/authz-server/oauth/authorize";
+    private static final String REDIRECT_URI = "http://android.local/";
+    private static final String AUTHORIZATION_URL = "https://apitestes.info.ufrn.br/authz-server/oauth/authorize";
     private static final String ACCESS_TOKEN_URL = "https://autenticacao-sustentacao.info.ufrn.br/authz-server/oauth/token";
     private static final String RESPONSE_TYPE_PARAM = "response_type";
     private static final String GRANT_TYPE = "authorization_code";
@@ -38,6 +40,12 @@ public class Login extends AppCompatActivity {
     private static final String QUESTION_MARK = "?";
     private static final String AMPERSAND = "&";
     private static final String EQUALS = "=";
+
+    private static final String KEY_ACCESS_TOKEN = "ACCESS_TOKEN";
+    private static final String KEY_REFRESH_TOKEN = "REFRESH_TOKEN";
+    private static final String KEY_EXPIRES_IN = "EXPIRES_IN";
+    private static final String KEY_TOKEN_TYPE = "TOKEN_TYPE";
+    private static final String KEY_USER_INFO = "USER_INFO";
 
     private WebView webView;
     private ProgressDialog progressDialog;
@@ -80,6 +88,7 @@ public class Login extends AppCompatActivity {
         });
 
         String authUrl = getAuthorizationUrl();
+        Log.d("URL", authUrl);
         webView.loadUrl(authUrl);
     }
 
@@ -135,16 +144,32 @@ public class Login extends AppCompatActivity {
         }
     }
 
-    private void savePreferences(OAuthResponse response) {
+//    private void savePreferences(OAuthResponse response) {
+//        String accessToken = response.getAccessToken();
+//        String refreshToken = response.getRefreshToken();
+//        Long expiresIn = response.getExpiresIn();
+//
+//        SharedPreferences preferences = this.getSharedPreferences("user_info", 0);
+//        SharedPreferences.Editor editor = preferences.edit();
+//        editor.putString(Constants.KEY_ACCESS_TOKEN, accessToken);
+//        editor.putString(Constants.KEY_REFRESH_TOKEN, refreshToken);
+//        editor.putLong(Constants.KEY_EXPIRES_IN, expiresIn);
+//        editor.commit();
+//    }
+
+    public void savePreferences(OAuthResponse response) {
         String accessToken = response.getAccessToken();
         String refreshToken = response.getRefreshToken();
+        String tokenType = response.getTokenType();
         Long expiresIn = response.getExpiresIn();
 
-        SharedPreferences preferences = this.getSharedPreferences("user_info", 0);
+        SharedPreferences preferences = this.getSharedPreferences(KEY_USER_INFO, 0);
         SharedPreferences.Editor editor = preferences.edit();
-        editor.putString(Constants.KEY_ACCESS_TOKEN, accessToken);
-        editor.putString(Constants.KEY_REFRESH_TOKEN, refreshToken);
-        editor.putLong(Constants.KEY_EXPIRES_IN, expiresIn);
+        editor.clear();
+        editor.putString(KEY_ACCESS_TOKEN, accessToken);
+        editor.putString(KEY_REFRESH_TOKEN, refreshToken);
+        editor.putString(KEY_TOKEN_TYPE, tokenType);
+        editor.putLong(KEY_EXPIRES_IN, expiresIn);
         editor.commit();
     }
 }

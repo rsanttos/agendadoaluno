@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="pds.ufrn.com.br.agendadoaluno">
-
+    <uses-permission android:name="android.permission.INTERNET" />
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -16,16 +16,22 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+<<<<<<< HEAD
         <activity android:name=".MainActivity" />
         <activity android:name=".Calendar" />
+=======
+        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".Calendar"></activity>
+>>>>>>> 5f82414012b2c5f0c58c28215c974519f649d7d4
         <activity android:name=".CalendarActivity"></activity>
         <activity android:name=".Login"></activity>
 
->>>>>>> b7a139c644e472ec6c5ca58ce99d84839b09a436
     </application>
     <uses-sdk
         android:minSdkVersion="14">
 
     </uses-sdk>
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
 
 </manifest>

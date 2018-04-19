@@ -16,14 +16,14 @@ public class SplashScreen extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_screen);
-        logo = (ImageView) findViewById(R.id.logomarca);
+        logo = findViewById(R.id.logomarca);
         Animation plimplim = AnimationUtils.loadAnimation(this,R.anim.animation);
         logo.startAnimation(plimplim);
         final Intent login = new Intent(this,Login.class);
         Thread timer = new Thread(){
             public void run () {
                 try {
-                    sleep(2800);
+                    sleep(1500);
 
                 }
                 catch (InterruptedException e) {
