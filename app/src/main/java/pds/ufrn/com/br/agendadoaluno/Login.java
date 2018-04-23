@@ -27,10 +27,9 @@ public class Login extends AppCompatActivity {
 
     private static final String CLIENT_ID_VALUE = "agenda-do-aluno-id";
     private static final String SECRET_KEY = "segredo";
-
     private static final String REDIRECT_URI = "http://android.local/";
-    private static final String AUTHORIZATION_URL = "https://apitestes.info.ufrn.br/authz-server/oauth/authorize";
-    private static final String ACCESS_TOKEN_URL = "https://autenticacao-sustentacao.info.ufrn.br/authz-server/oauth/token";
+    private static final String AUTHORIZATION_URL = "https://autenticacao.info.ufrn.br/authz-server/oauth/authorize";
+    private static final String ACCESS_TOKEN_URL = "https://api.info.ufrn.br/authz-server/oauth/token";
     private static final String RESPONSE_TYPE_PARAM = "response_type";
     private static final String GRANT_TYPE = "authorization_code";
     private static final String RESPONSE_TYPE_VALUE = "code";
@@ -106,10 +105,11 @@ public class Login extends AppCompatActivity {
             ProgressDialog.show(Login.this, "", "Loading", true);
         }
 
+        protected OAuth2Client client;
+        protected String token;
         @Override
         protected Boolean doInBackground(String... strings) {
             try {
-                OAuth2Client client;
                 Map<String, String> map = new HashMap<>();
                 map.put(REDIRECT_URI_PARAM, REDIRECT_URI);
                 map.put(RESPONSE_TYPE_VALUE, strings[0]);
@@ -122,6 +122,8 @@ public class Login extends AppCompatActivity {
                 OAuthResponse response = client.requestAccessToken();
                 if (response.isSuccessful()) {
                     savePreferences(response);
+                    token = response.getAccessToken();
+                    Log.d("Token", token);
                     return true;
                 }
             } catch (IOException e) {
@@ -138,7 +140,9 @@ public class Login extends AppCompatActivity {
             }
 
             if(status){
-                Intent startOffersActivity = new Intent(Login.this, Calendar.class);
+                //Intent startOffersActivity = new Intent(Login.this, Calendar.class);
+                Intent startOffersActivity = new Intent(Login.this, LoanActivity.class);
+                startOffersActivity.putExtra("token", token);
                 Login.this.startActivity(startOffersActivity);
             }
         }
