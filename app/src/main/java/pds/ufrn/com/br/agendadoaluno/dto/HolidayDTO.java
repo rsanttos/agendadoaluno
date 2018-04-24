@@ -35,4 +35,9 @@ public class HolidayDTO {
         this.description = description;
     }
 
+    @Override
+    public String toString() {
+        String str = String.format("%s \n Data: %d \n", description, date);
+        return str;
+    }
 }

@@ -7,12 +7,15 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import java.util.concurrent.ExecutionException;
 
 import pds.ufrn.com.br.agendadoaluno.dto.CalendarDTO;
+import pds.ufrn.com.br.agendadoaluno.dto.HolidayDTO;
+import pds.ufrn.com.br.agendadoaluno.dto.TaskDTO;
 import pds.ufrn.com.br.agendadoaluno.service.CalendarService;
 
 public class CalendarActivity extends AppCompatActivity {
@@ -53,6 +56,10 @@ public class CalendarActivity extends AppCompatActivity {
             tvFimMatriculaExtraordinaria.setText(String.valueOf(calendarDTO.getEndExtraordinaryEnrollment()));
             tvFimPeriodo.setText(String.valueOf(calendarDTO.getEndPeriod()));
             tvFimRematricula.setText(String.valueOf(calendarDTO.getEndReEnrollment()));
+            ListView lvHolidays = (ListView) findViewById(R.id.lvFeriados);
+            ArrayAdapter<HolidayDTO> arrayAdapterHolidays = new ArrayAdapter<HolidayDTO>(this,
+                    android.R.layout.simple_list_item_1, calendarDTO.getHolidays());
+            lvHolidays.setAdapter(arrayAdapterHolidays);
         }
 
     }
