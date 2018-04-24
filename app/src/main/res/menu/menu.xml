@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/item_calendario"
+        android:title="@string/menu_calendario" />
+    <item android:id="@+id/item_tarefas_avaliacoes"
+        android:title="@string/menu_tarefas_avaliacoes" />
+    <item android:id="@+id/item_emprestimos"
+        android:title="@string/menu_emprestimos" />
+</menu>

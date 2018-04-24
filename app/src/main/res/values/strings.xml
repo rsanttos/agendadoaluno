@@ -3,5 +3,8 @@
     <string name="title_activity_splash_screen">SplashScreen</string>
     <string name="tab_name1">Agenda</string>
     <string name="tab_name2">Configurações</string>
+    <string name="menu_calendario">Calendário acadêmico</string>
+    <string name="menu_tarefas_avaliacoes">Tarefas e avaliações</string>
+    <string name="menu_emprestimos">Empréstimos na biblioteca</string>
     <string name="text_view_message">Selecione uma data para visualizar eventos.</string>
 </resources>
