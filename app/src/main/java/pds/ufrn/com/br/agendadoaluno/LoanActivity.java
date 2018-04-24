@@ -85,7 +85,7 @@ public class LoanActivity extends AppCompatActivity {
                 return true;
             case R.id.item_calendario:
                 intent = new Intent();
-                intent.setClass(this, Calendar.class);
+                intent.setClass(this, CalendarActivity.class);
                 token = getIntent().getStringExtra("token");
                 intent.putExtra("token", token);
                 startActivity(intent);

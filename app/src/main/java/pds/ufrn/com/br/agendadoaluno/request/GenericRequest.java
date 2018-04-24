@@ -15,7 +15,7 @@ import java.util.Map.Entry;
 
 public class GenericRequest {
 
-    private String host = "http://192.168.56.1:8080";
+    private String host = "http://192.168.0.24:8080";
     protected String url = "";
     private String fullAddress = "";
     protected String methodType = "GET";
