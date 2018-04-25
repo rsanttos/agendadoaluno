@@ -9,6 +9,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,6 +30,7 @@ public class LoanActivity extends AppCompatActivity {
         setContentView(R.layout.activity_loan);
         criarBarraMenu();
         ListView lvLoans = (ListView) findViewById(R.id.lvEmprestimos);
+        TextView tvNaoPossuiEmprestimos = (TextView) findViewById(R.id.tvNaoPossuiEmprestimos);
 
         if(getIntent().hasExtra("token")){
             String token = getIntent().getStringExtra("token");
@@ -41,10 +43,13 @@ public class LoanActivity extends AppCompatActivity {
                 for(int i = 0 ; i < loans.length ; i++){
                     loansArray.add(loans[i]);
                 }
-
-                ArrayAdapter<LoanDTO> arrayAdapterEmprestimos = new ArrayAdapter<LoanDTO>(this,
-                        android.R.layout.simple_list_item_1, loansArray);
-                lvLoans.setAdapter(arrayAdapterEmprestimos);
+                if(loansArray.size() > 0) {
+                    ArrayAdapter<LoanDTO> arrayAdapterEmprestimos = new ArrayAdapter<LoanDTO>(this,
+                            android.R.layout.simple_list_item_1, loansArray);
+                    lvLoans.setAdapter(arrayAdapterEmprestimos);
+                } else {
+                    tvNaoPossuiEmprestimos.setText("Você não possui empréstimos em aberto.");
+                }
 
             } catch (InterruptedException e) {
                 e.printStackTrace();

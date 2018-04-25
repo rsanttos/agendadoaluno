@@ -23,6 +23,12 @@
         android:text="Empréstimos de livros"
         android:textSize="24sp"
         android:textStyle="bold" />
+    <TextView
+        android:id="@+id/tvNaoPossuiEmprestimos"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="15sp"
+        android:textStyle="bold" />
     <ListView
         android:id="@+id/lvEmprestimos"
         android:layout_width="wrap_content"

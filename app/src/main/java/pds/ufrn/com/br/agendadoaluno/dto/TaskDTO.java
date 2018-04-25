@@ -6,6 +6,7 @@ import pds.ufrn.com.br.agendadoaluno.util.DateUtil;
 
 public class TaskDTO {
     private int id_turma;
+    private String nomeComponente;
     private String titulo;
     private String conteudo;
     private long data_inicio;
@@ -29,6 +30,13 @@ public class TaskDTO {
         this.minuto_entrega = minuto_entrega;
     }
 
+    public String getNomeComponente() {
+        return nomeComponente;
+    }
+
+    public void setNomeComponente(String nomeComponente) {
+        this.nomeComponente = nomeComponente;
+    }
     public int getId_turma() {
         return id_turma;
     }
@@ -128,7 +136,8 @@ public class TaskDTO {
 
     @Override
     public String toString(){
-        String str = titulo + "\n";
+        String str = nomeComponente + "\n";
+        str += titulo + "\n";
         str += conteudo + "\n";
         str += "Data início: " + DateUtil.format(data_inicio) + " às " + hora_inicio + ":" + minuto_inicio + "\n";
         str += "Data entrega: " + DateUtil.format(data_entrega) + " às " + hora_entrega + ":" + minuto_entrega + "\n";

@@ -14,12 +14,21 @@ import pds.ufrn.com.br.agendadoaluno.util.DateUtil;
 public class EvaluationDTO {
 
     private int id_avaliacao;
+    private String nomeComponente;
     private long data;
     private String hora;
     private String descricao;
 
     public EvaluationDTO() {
         super();
+    }
+
+    public String getNomeComponente() {
+        return nomeComponente;
+    }
+
+    public void setNomeComponente(String nomeComponente) {
+        this.nomeComponente = nomeComponente;
     }
 
     public int getId_avaliacao() {
@@ -81,7 +90,8 @@ public class EvaluationDTO {
 
     @Override
     public String toString(){
-        String str = descricao + "\n";
+        String str = nomeComponente + "\n";
+        str += descricao + "\n";
         str += "Dia " + DateUtil.format(data) + "\n";
         return str;
     }
