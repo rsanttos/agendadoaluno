@@ -2,6 +2,8 @@ package pds.ufrn.com.br.agendadoaluno.dto;
 
 import com.google.gson.Gson;
 
+import pds.ufrn.com.br.agendadoaluno.util.DateUtil;
+
 public class TaskDTO {
     private int id_turma;
     private String titulo;
@@ -128,8 +130,8 @@ public class TaskDTO {
     public String toString(){
         String str = titulo + "\n";
         str += conteudo + "\n";
-        str += "Data início: " + data_inicio + " às " + hora_inicio + ":" + minuto_inicio + "\n";
-        str += "Data entrega: " + data_entrega + " às " + hora_entrega + ":" + minuto_entrega + "\n";
+        str += "Data início: " + DateUtil.format(data_inicio) + " às " + hora_inicio + ":" + minuto_inicio + "\n";
+        str += "Data entrega: " + DateUtil.format(data_entrega) + " às " + hora_entrega + ":" + minuto_entrega + "\n";
         return str;
     }
 }

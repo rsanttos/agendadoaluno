@@ -6,6 +6,8 @@ package pds.ufrn.com.br.agendadoaluno.dto;
 
 import com.google.gson.Gson;
 
+import pds.ufrn.com.br.agendadoaluno.util.DateUtil;
+
 /**
  * Created by f202359 on 13/04/2018.
  */
@@ -80,7 +82,7 @@ public class EvaluationDTO {
     @Override
     public String toString(){
         String str = descricao + "\n";
-        str += "Dia " + data + "\n";
+        str += "Dia " + DateUtil.format(data) + "\n";
         return str;
     }
 }

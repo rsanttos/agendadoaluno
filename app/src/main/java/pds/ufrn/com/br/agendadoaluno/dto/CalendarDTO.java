@@ -4,6 +4,8 @@ import com.google.gson.Gson;
 
 import java.util.List;
 
+import pds.ufrn.com.br.agendadoaluno.util.DateUtil;
+
 /**
  * Created by root on 24/04/18.
  */
@@ -39,6 +41,10 @@ public class CalendarDTO {
     }
 
 
+    public String getFormattedStartOnlineEnrollment() {
+        return DateUtil.format(startOnlineEnrollment);
+    }
+
     public void setStartOnlineEnrollment(long startOnlineEnrollment) {
         this.startOnlineEnrollment = startOnlineEnrollment;
     }
@@ -48,6 +54,9 @@ public class CalendarDTO {
         return startExtraordinaryEnrollment;
     }
 
+    public String getFormattedStartExtraordinaryEnrollment() {
+        return DateUtil.format(startExtraordinaryEnrollment);
+    }
 
     public void setStartExtraordinaryEnrollment(long startExtraordinaryEnrollment) {
         this.startExtraordinaryEnrollment = startExtraordinaryEnrollment;
@@ -58,6 +67,9 @@ public class CalendarDTO {
         return startPeriod;
     }
 
+    public String getFormattedStartPeriod() {
+        return DateUtil.format(startPeriod);
+    }
 
     public void setStartPeriod(long startPeriod) {
         this.startPeriod = startPeriod;
@@ -68,6 +80,9 @@ public class CalendarDTO {
         return startReEnrollment;
     }
 
+    public String getFormattedStartReEnrollment() {
+        return DateUtil.format(startReEnrollment);
+    }
 
     public void setStartReEnrollment(long startReEnrollment) {
         this.startReEnrollment = startReEnrollment;
@@ -76,6 +91,10 @@ public class CalendarDTO {
 
     public long getEndExtraordinaryEnrollment() {
         return endExtraordinaryEnrollment;
+    }
+
+    public String getFormattedEndExtraordinaryEnrollment() {
+        return DateUtil.format(endExtraordinaryEnrollment);
     }
 
 
@@ -88,6 +107,10 @@ public class CalendarDTO {
         return endOnlineEnrollment;
     }
 
+    public String getFormattedEndOnlineEnrollment() {
+        return DateUtil.format(endOnlineEnrollment);
+    }
+
 
     public void setEndOnlineEnrollment(long endOnlineEnrollment) {
         this.endOnlineEnrollment = endOnlineEnrollment;
@@ -96,6 +119,10 @@ public class CalendarDTO {
 
     public long getEndPeriod() {
         return endPeriod;
+    }
+
+    public String getFormattedEndPeriod() {
+        return DateUtil.format(endPeriod);
     }
 
 
@@ -108,6 +135,9 @@ public class CalendarDTO {
         return endReEnrollment;
     }
 
+    public String getFormattedEndReEnrollment() {
+        return DateUtil.format(endReEnrollment);
+    }
 
     public void setEndReEnrollment(long endReEnrollment) {
         this.endReEnrollment = endReEnrollment;

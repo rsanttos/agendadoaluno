@@ -1,6 +1,12 @@
 package pds.ufrn.com.br.agendadoaluno.dto;
 import com.google.gson.Gson;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+import pds.ufrn.com.br.agendadoaluno.util.DateUtil;
+
 public class LoanDTO {
     private String autor;
     private String cpf_cnpj_usuario;
@@ -125,7 +131,7 @@ public class LoanDTO {
 
     @Override
     public String toString(){
-        String str = String.format("Título: %s \n Autor: %s \n Data de entrega: %d \n", titulo, autor, data_devolucao);
+        String str = String.format("Título: %s \n Autor: %s \n Data de entrega: %s \n", titulo, autor, DateUtil.format(data_devolucao));
         return str;
     }
 

@@ -26,7 +26,7 @@
 
     <TableLayout
         android:layout_width="match_parent"
-        android:layout_height="220dp">
+        android:layout_height="130dp">
 
         <TableRow
             android:layout_width="match_parent"
@@ -49,14 +49,14 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
             <TextView
-                android:id="@+id/tvInicioMatricula"
+                android:id="@+id/tvMatricula"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Início das matrículas"
+                android:text="Matrícula"
                 android:textSize="18sp"
                 android:textStyle="bold" />
             <TextView
-                android:id="@+id/tvValorInicioMatricula"
+                android:id="@+id/tvValorMatricula"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="18sp" />
@@ -66,14 +66,14 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
             <TextView
-                android:id="@+id/tvInicioMatriculaExtraordinaria"
+                android:id="@+id/tvMatriculaExtraordinaria"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Início da matrícula Extraordinária"
+                android:text="Matrícula Extraordinária"
                 android:textSize="18sp"
                 android:textStyle="bold" />
             <TextView
-                android:id="@+id/tvValorInicioMatriculaExtraordinaria"
+                android:id="@+id/tvValorMatriculaExtraordinaria"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="18sp" />
@@ -83,83 +83,14 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
             <TextView
-                android:id="@+id/tvInicioPeriodo"
+                android:id="@+id/tvPeriodo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Início do Período"
+                android:text="Período"
                 android:textSize="18sp"
                 android:textStyle="bold" />
             <TextView
-                android:id="@+id/tvValorInicioPeriodo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="18sp" />
-
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-            <TextView
-                android:id="@+id/tvInicioRematricula"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Início da rematricula"
-                android:textSize="18sp"
-                android:textStyle="bold" />
-            <TextView
-                android:id="@+id/tvValorInicioRematricula"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="18sp" />
-
-        </TableRow>
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-            <TextView
-                android:id="@+id/tvFimMatricula"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Fim das matrículas"
-                android:textSize="18sp"
-                android:textStyle="bold" />
-            <TextView
-                android:id="@+id/tvValorFimMatricula"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="18sp" />
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-            <TextView
-                android:id="@+id/tvFimMatriculaExtraordinaria"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Fim da matrícula extraordinária"
-                android:textSize="18sp"
-                android:textStyle="bold" />
-            <TextView
-                android:id="@+id/tvValorFimMatriculaExtraordinaria"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="18sp" />
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-            <TextView
-                android:id="@+id/tvFimPeriodo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Fim do período"
-                android:textSize="18sp"
-                android:textStyle="bold" />
-            <TextView
-                android:id="@+id/tvValorFimPeriodo"
+                android:id="@+id/tvValorPeriodo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="18sp" />
@@ -170,14 +101,14 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
             <TextView
-                android:id="@+id/tvFimRematricula"
+                android:id="@+id/tvRematricula"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Fim da rematrícula"
+                android:text="Rematricula"
                 android:textSize="18sp"
                 android:textStyle="bold" />
             <TextView
-                android:id="@+id/tvValorFimRematricula"
+                android:id="@+id/tvValorRematricula"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="18sp" />
@@ -197,6 +128,6 @@
     <ListView
         android:id="@+id/lvFeriados"
         android:layout_width="wrap_content"
-        android:layout_height="310dp" />
+        android:layout_height="430dp" />
 
 </LinearLayout>

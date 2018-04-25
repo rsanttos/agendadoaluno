@@ -1,5 +1,9 @@
 package pds.ufrn.com.br.agendadoaluno.dto;
 
+import java.sql.Date;
+
+import pds.ufrn.com.br.agendadoaluno.util.DateUtil;
+
 /**
  * Created by root on 24/04/18.
  */
@@ -37,7 +41,7 @@ public class HolidayDTO {
 
     @Override
     public String toString() {
-        String str = String.format("%s \n Data: %d \n", description, date);
+        String str = String.format("%s \n Data: %s \n", description, DateUtil.format(date));
         return str;
     }
 }

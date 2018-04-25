@@ -28,14 +28,10 @@ public class CalendarActivity extends AppCompatActivity {
         criarBarraMenu();
 
         TextView tvAno = (TextView) findViewById(R.id.tvValorAno);
-        TextView tvInicioMatricula = (TextView) findViewById(R.id.tvValorInicioMatricula);
-        TextView tvInicioMatriculaExtraordinaria = (TextView) findViewById(R.id.tvValorInicioMatriculaExtraordinaria);
-        TextView tvInicioRematricula = (TextView) findViewById(R.id.tvValorInicioRematricula);
-        TextView tvInicioPeriodo = (TextView) findViewById(R.id.tvValorInicioPeriodo);
-        TextView tvFimMatricula = (TextView) findViewById(R.id.tvValorFimMatricula);
-        TextView tvFimMatriculaExtraordinaria = (TextView) findViewById(R.id.tvValorFimMatriculaExtraordinaria);
-        TextView tvFimRematricula = (TextView) findViewById(R.id.tvValorFimRematricula);
-        TextView tvFimPeriodo = (TextView) findViewById(R.id.tvValorFimPeriodo);
+        TextView tvMatricula = (TextView) findViewById(R.id.tvValorMatricula);
+        TextView tvMatriculaExtraordinaria = (TextView) findViewById(R.id.tvValorMatriculaExtraordinaria);
+        TextView tvRematricula = (TextView) findViewById(R.id.tvValorRematricula);
+        TextView tvPeriodo = (TextView) findViewById(R.id.tvValorPeriodo);
 
         CalendarService calendarService = new CalendarService();
         CalendarDTO calendarDTO = null;
@@ -48,14 +44,11 @@ public class CalendarActivity extends AppCompatActivity {
         }
         if(calendarDTO != null){
             tvAno.setText(String.valueOf(calendarDTO.getYear()));
-            tvInicioMatricula.setText(String.valueOf(calendarDTO.getStartOnlineEnrollment()));
-            tvInicioMatriculaExtraordinaria.setText(String.valueOf(calendarDTO.getStartExtraordinaryEnrollment()));
-            tvInicioPeriodo.setText(String.valueOf(calendarDTO.getStartPeriod()));
-            tvInicioRematricula.setText(String.valueOf(calendarDTO.getStartReEnrollment()));
-            tvFimMatricula.setText(String.valueOf(calendarDTO.getEndOnlineEnrollment()));
-            tvFimMatriculaExtraordinaria.setText(String.valueOf(calendarDTO.getEndExtraordinaryEnrollment()));
-            tvFimPeriodo.setText(String.valueOf(calendarDTO.getEndPeriod()));
-            tvFimRematricula.setText(String.valueOf(calendarDTO.getEndReEnrollment()));
+            tvMatricula.setText(calendarDTO.getFormattedStartOnlineEnrollment() + " - " + calendarDTO.getFormattedEndOnlineEnrollment());
+            tvMatriculaExtraordinaria.setText(calendarDTO.getFormattedStartExtraordinaryEnrollment() + " - " + calendarDTO.getFormattedEndExtraordinaryEnrollment());
+            tvPeriodo.setText(calendarDTO.getFormattedStartPeriod() + " - " + calendarDTO.getFormattedEndPeriod());
+            tvRematricula.setText(calendarDTO.getFormattedStartReEnrollment() + " - " + calendarDTO.getFormattedEndReEnrollment());
+
             ListView lvHolidays = (ListView) findViewById(R.id.lvFeriados);
             ArrayAdapter<HolidayDTO> arrayAdapterHolidays = new ArrayAdapter<HolidayDTO>(this,
                     android.R.layout.simple_list_item_1, calendarDTO.getHolidays());
