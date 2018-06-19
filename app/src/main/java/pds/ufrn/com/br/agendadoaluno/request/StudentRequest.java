@@ -12,7 +12,7 @@ public class StudentRequest extends GenericRequest {
     }
 
     public String getEvaluationsAndTasksStudentLoggedIn(String token){
-        url = String.format("/student/%s", token);
+        url = String.format("/student/graduate/%s", token);
         String resultado = super.objectRequest();
         return resultado;
     }
