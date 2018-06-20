@@ -4,7 +4,7 @@ android {
     compileSdkVersion 26
     defaultConfig {
         applicationId "pds.ufrn.com.br.agendadoaluno"
-        minSdkVersion 14
+        minSdkVersion 25
         targetSdkVersion 26
         versionCode 1
         versionName "1.0"
@@ -17,16 +17,22 @@ android {
         }
     }
     buildToolsVersion '27.0.3'
+    compileOptions {
+        targetCompatibility 1.8
+        sourceCompatibility 1.8
+    }
 }
 
 dependencies {
+    compile 'com.applandeo:material-calendar-view:1.4.0'
     compile 'com.google.code.gson:gson:2.8.0'
     implementation 'ca.mimic:oauth2library:2.4.2'
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation 'com.android.support:appcompat-v7:26.1.0'
     implementation 'com.android.support.constraint:constraint-layout:1.0.2'
     implementation 'com.android.support:design:26.1.0'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
+    implementation files('libs/agendaufrnfw.jar')
 }

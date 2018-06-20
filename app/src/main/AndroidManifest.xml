@@ -30,7 +30,8 @@
         <activity android:name=".Login" />
         <activity android:name=".StudentActivity" />
         <activity android:name=".MenuActivity" />
-        <activity android:name=".LoanActivity"></activity>
+        <activity android:name=".LoanActivity" />
+        <activity android:name=".CalendarCustomActivity"></activity>
     </application>
 
 </manifest>

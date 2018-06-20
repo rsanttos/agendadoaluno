@@ -12,16 +12,21 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import java.util.ArrayList;
-import java.util.List;
+import com.applandeo.materialcalendarview.EventDay;
+
+import java.util.*;
 import java.util.concurrent.ExecutionException;
 
-import pds.ufrn.com.br.agendadoaluno.dto.ClassDTO;
-import pds.ufrn.com.br.agendadoaluno.dto.EvaluationDTO;
-import pds.ufrn.com.br.agendadoaluno.dto.StudentDTO;
-import pds.ufrn.com.br.agendadoaluno.dto.TaskDTO;
-import pds.ufrn.com.br.agendadoaluno.request.StudentRequest;
-import pds.ufrn.com.br.agendadoaluno.service.StudentService;
+import agendaufrnfw.ufrn.imd.pds.dto.ClassDTO;
+import agendaufrnfw.ufrn.imd.pds.dto.EvaluationDTO;
+import agendaufrnfw.ufrn.imd.pds.dto.StudentDTO;
+import agendaufrnfw.ufrn.imd.pds.dto.TaskDTO;
+import agendaufrnfw.ufrn.imd.pds.model.calendar.Evaluation;
+import agendaufrnfw.ufrn.imd.pds.model.calendar.ProfessorCalendar;
+import agendaufrnfw.ufrn.imd.pds.model.calendar.Task;
+import agendaufrnfw.ufrn.imd.pds.model.user.GraduateStudent;
+import agendaufrnfw.ufrn.imd.pds.model.user.UndergraduateStudent;
+import pds.ufrn.com.br.agendadoaluno.service.UndergraduateStudentService;
 
 import static android.R.layout.simple_list_item_1;
 
@@ -41,24 +46,24 @@ public class StudentActivity extends AppCompatActivity {
 
         if(getIntent().hasExtra("token")){
             String token = getIntent().getStringExtra("token");
-            StudentService studentService = new StudentService(token);
+            UndergraduateStudentService studentService = new UndergraduateStudentService(token);
             try {
-                StudentDTO student = studentService.execute().get();
+                UndergraduateStudent student = studentService.execute().get();
                 tvNome.setText(student.getNome_discente());
                 tvCurso.setText(student.getNome_curso());
                 tvMatricula.setText(String.valueOf(student.getMatricula()));
-                List<TaskDTO> allTasks = new ArrayList<TaskDTO>();
-                List<EvaluationDTO> allEvaluations = new ArrayList<EvaluationDTO>();
+                List<Task> allTasks = new ArrayList<Task>();
+                List<Evaluation> allEvaluations = new ArrayList<Evaluation>();
                 for(ClassDTO classe : student.getClasses()){
                     allTasks.addAll(classe.getTasks());
                     allEvaluations.addAll(classe.getEvaluations());
                 }
 
-                ArrayAdapter<TaskDTO> arrayAdapterTarefas = new ArrayAdapter<TaskDTO>(this,
+                ArrayAdapter<Task> arrayAdapterTarefas = new ArrayAdapter<Task>(this,
                         android.R.layout.simple_list_item_1, allTasks);
                 lvTarefas.setAdapter(arrayAdapterTarefas);
 
-                ArrayAdapter<EvaluationDTO> arrayAdapterAvaliacoes = new ArrayAdapter<EvaluationDTO>(this,
+                ArrayAdapter<Evaluation> arrayAdapterAvaliacoes = new ArrayAdapter<Evaluation>(this,
                         android.R.layout.simple_list_item_1, allEvaluations);
                 lvAvaliacoes.setAdapter(arrayAdapterAvaliacoes);
 
@@ -93,6 +98,13 @@ public class StudentActivity extends AppCompatActivity {
         String token = "";
         int id = item.getItemId();
         switch (id){
+            case R.id.item_calendario_compromissos:
+                intent = new Intent();
+                intent.setClass(this, CalendarCustomActivity.class);
+                token = getIntent().getStringExtra("token");
+                intent.putExtra("token", token);
+                startActivity(intent);
+                return true;
             case R.id.item_tarefas_avaliacoes:
                 intent = new Intent();
                 intent.setClass(this, StudentActivity.class);

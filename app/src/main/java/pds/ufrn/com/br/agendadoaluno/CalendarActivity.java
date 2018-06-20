@@ -13,10 +13,11 @@ import android.widget.TextView;
 
 import java.util.concurrent.ExecutionException;
 
-import pds.ufrn.com.br.agendadoaluno.dto.CalendarDTO;
-import pds.ufrn.com.br.agendadoaluno.dto.HolidayDTO;
-import pds.ufrn.com.br.agendadoaluno.dto.TaskDTO;
-import pds.ufrn.com.br.agendadoaluno.service.CalendarService;
+import agendaufrnfw.ufrn.imd.pds.dto.HolidayDTO;
+import agendaufrnfw.ufrn.imd.pds.dto.UndergraduateStudentCalendarDTO;
+import agendaufrnfw.ufrn.imd.pds.model.calendar.Holiday;
+import agendaufrnfw.ufrn.imd.pds.model.calendar.UndergraduateStudentCalendar;
+import pds.ufrn.com.br.agendadoaluno.service.UndergraduateStudentCalendarService;
 
 public class CalendarActivity extends AppCompatActivity {
 
@@ -33,25 +34,26 @@ public class CalendarActivity extends AppCompatActivity {
         TextView tvRematricula = (TextView) findViewById(R.id.tvValorRematricula);
         TextView tvPeriodo = (TextView) findViewById(R.id.tvValorPeriodo);
 
-        CalendarService calendarService = new CalendarService();
-        CalendarDTO calendarDTO = null;
+        UndergraduateStudentCalendarService calendarService = new UndergraduateStudentCalendarService();
+        UndergraduateStudentCalendar undergraduateStudentCalendar = null;
+
         try {
-            calendarDTO = calendarService.execute().get();
+            undergraduateStudentCalendar = calendarService.execute().get();
         } catch (InterruptedException e) {
             e.printStackTrace();
         } catch (ExecutionException e) {
             e.printStackTrace();
         }
-        if(calendarDTO != null){
-            tvAno.setText(String.valueOf(calendarDTO.getYear()));
-            tvMatricula.setText(calendarDTO.getFormattedStartOnlineEnrollment() + " - " + calendarDTO.getFormattedEndOnlineEnrollment());
-            tvMatriculaExtraordinaria.setText(calendarDTO.getFormattedStartExtraordinaryEnrollment() + " - " + calendarDTO.getFormattedEndExtraordinaryEnrollment());
-            tvPeriodo.setText(calendarDTO.getFormattedStartPeriod() + " - " + calendarDTO.getFormattedEndPeriod());
-            tvRematricula.setText(calendarDTO.getFormattedStartReEnrollment() + " - " + calendarDTO.getFormattedEndReEnrollment());
+        if(undergraduateStudentCalendar != null){
+            tvAno.setText(String.valueOf(undergraduateStudentCalendar.getAno()));
+            tvMatricula.setText(undergraduateStudentCalendar.getInicio_matricula_online() + " - " + undergraduateStudentCalendar.getFim_matricula_online());
+            tvMatriculaExtraordinaria.setText(undergraduateStudentCalendar.getInicio_matricula_extraordinaria() + " - " + undergraduateStudentCalendar.getFim_matricula_extraordinaria());
+            tvPeriodo.setText(undergraduateStudentCalendar.getInicio_periodo() + " - " + undergraduateStudentCalendar.getFim_periodo());
+            tvRematricula.setText(undergraduateStudentCalendar.getInicio_rematricula() + " - " + undergraduateStudentCalendar.getFim_rematricula());
 
             ListView lvHolidays = (ListView) findViewById(R.id.lvFeriados);
-            ArrayAdapter<HolidayDTO> arrayAdapterHolidays = new ArrayAdapter<HolidayDTO>(this,
-                    android.R.layout.simple_list_item_1, calendarDTO.getHolidays());
+            ArrayAdapter<Holiday> arrayAdapterHolidays = new ArrayAdapter<Holiday>(this,
+                    android.R.layout.simple_list_item_1, undergraduateStudentCalendar.getHolidays());
             lvHolidays.setAdapter(arrayAdapterHolidays);
         }
 
@@ -77,6 +79,13 @@ public class CalendarActivity extends AppCompatActivity {
         String token = "";
         int id = item.getItemId();
         switch (id){
+            case R.id.item_calendario_compromissos:
+                intent = new Intent();
+                intent.setClass(this, CalendarCustomActivity.class);
+                token = getIntent().getStringExtra("token");
+                intent.putExtra("token", token);
+                startActivity(intent);
+                return true;
             case R.id.item_tarefas_avaliacoes:
                 intent = new Intent();
                 intent.setClass(this, StudentActivity.class);

@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/item_calendario_compromissos"
+        android:title="@string/menu_calendario_compromissos" />
     <item android:id="@+id/item_calendario"
         android:title="@string/menu_calendario" />
     <item android:id="@+id/item_tarefas_avaliacoes"

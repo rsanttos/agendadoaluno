@@ -15,12 +15,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 
-import pds.ufrn.com.br.agendadoaluno.dto.LoanDTO;
-import pds.ufrn.com.br.agendadoaluno.dto.StudentDTO;
-import pds.ufrn.com.br.agendadoaluno.dto.TaskDTO;
-import pds.ufrn.com.br.agendadoaluno.request.LoanRequest;
+import agendaufrnfw.ufrn.imd.pds.model.calendar.Loan;
+import agendaufrnfw.ufrn.imd.pds.model.user.UndergraduateStudent;
 import pds.ufrn.com.br.agendadoaluno.service.LoanService;
-import pds.ufrn.com.br.agendadoaluno.service.StudentService;
+import pds.ufrn.com.br.agendadoaluno.service.UndergraduateStudentService;
 
 public class LoanActivity extends AppCompatActivity {
 
@@ -35,16 +33,16 @@ public class LoanActivity extends AppCompatActivity {
         if(getIntent().hasExtra("token")){
             String token = getIntent().getStringExtra("token");
             try {
-                StudentService studentService = new StudentService(token);
-                StudentDTO student = studentService.execute().get();
+                UndergraduateStudentService studentService = new UndergraduateStudentService(token);
+                UndergraduateStudent student = studentService.execute().get();
                 LoanService loanService = new LoanService(student.getCpf_cnpj(), token);
-                LoanDTO[] loans = loanService.execute().get();
-                List<LoanDTO> loansArray = new ArrayList<LoanDTO>();
+                Loan[] loans = loanService.execute().get();
+                List<Loan> loansArray = new ArrayList<Loan>();
                 for(int i = 0 ; i < loans.length ; i++){
                     loansArray.add(loans[i]);
                 }
                 if(loansArray.size() > 0) {
-                    ArrayAdapter<LoanDTO> arrayAdapterEmprestimos = new ArrayAdapter<LoanDTO>(this,
+                    ArrayAdapter<Loan> arrayAdapterEmprestimos = new ArrayAdapter<Loan>(this,
                             android.R.layout.simple_list_item_1, loansArray);
                     lvLoans.setAdapter(arrayAdapterEmprestimos);
                 } else {
@@ -106,4 +104,5 @@ public class LoanActivity extends AppCompatActivity {
                 return super.onOptionsItemSelected(item);
         }
     }
+
 }
